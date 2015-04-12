@@ -218,12 +218,18 @@ a {
 @media screen and (min-width: 42em) and (max-width: 64em) {
   .main-content {
     padding: 2rem 4rem;
-    font-size: 1.1rem; } }
+    font-size: 1.1rem; 
+    background: rgba(255,255,255,0.95);
+  } 
+}
 
 @media screen and (max-width: 42em) {
   .main-content {
     padding: 2rem 1rem;
-    font-size: 1rem; } }
+    font-size: 1rem; 
+    background: rgba(255,255,255,0.95);
+  } 
+}
 
 .site-footer {
   padding-top: 2rem;
