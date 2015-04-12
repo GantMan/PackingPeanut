@@ -5,6 +5,12 @@
 # Super fix #2 ->   Store depending on the class and retrieve with either
 # A: Failover defaults calling methods
 # B: Grab ALL data, and use that hash
+# Super fix #3 ->  Serialize with JSON
+# new Gson().toJson(obj)
+# And for deserialization,
+
+# new Gson().fromJson(jsonStr, MyClass.class);
+# http://stackoverflow.com/questions/7346786/json-on-android-serialization
 
 module App
   module Persistence

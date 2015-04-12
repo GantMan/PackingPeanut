@@ -4,6 +4,8 @@ iOS has [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persisten
 
 There is a sedulous effort to make this syntax fit BubbleWrap's as much as possible, but differences simply exist, either for good, technical, or sometimes diabolical reasons :smiling_imp:
 
+[**GITHUB HOMEPAGE**](http://gantman.github.io/PackingPeanut/)
+
 ## Installation
 
 **Step 1:** Add this line to your application's Gemfile:
