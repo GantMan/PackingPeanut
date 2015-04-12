@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 
 Gem::Specification.new do |spec|
   spec.name          = "PackingPeanut"
@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Gant"]
   spec.email         = ["GantMan@gmail.com"]
   spec.description   = "App persistent data for RubyMotion Android"
-  spec.summary       = "App persistent data for RubyMotion Android"
-  spec.homepage      = "https://github.com/GantMan/PackingPeanut"
+  spec.summary       = "App persistent data for RubyMotion Android, designed to fit the API stylings of the popular iOS Gem BubbleWrap which also supplies persistence."
+  spec.homepage      = "http://gantman.github.io/PackingPeanut/"
   spec.license       = "MIT"
 
   files = []
