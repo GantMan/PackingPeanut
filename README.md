@@ -1,6 +1,8 @@
 # PackingPeanut
 
-iOS has BubbleWrap for App Persistence : Android has **PackingPeanut**
+iOS has [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persistence : Android has **PackingPeanut**
+
+There is a sedulous effort to make this syntax fit BubbleWrap's as much as possible, but differences simply exist, either for good, technical, or sometimes diabolical reasons.
 
 ## Installation
 
@@ -18,8 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-Example Usage
+Example Usage from REPL
 ```
+# PP automatically has context if the module is included but in this case
+# First we need to set the context when in REPL, 
+$ App::Persistence.context = self
+=> #<MainActivity:0x1d20058e>
 $ App::Persistence['dinner'] = "nachos"
 => true  # This differs from Bubblewrap.... boolean on success for save (more informative)
 $ App::Persistence['dinner'] 
