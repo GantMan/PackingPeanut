@@ -6,10 +6,10 @@ Gem::Specification.new do |spec|
   spec.version       = VERSION
   spec.authors       = ["Gant"]
   spec.email         = ["GantMan@gmail.com"]
-  spec.description   = ""
-  spec.summary       = ""
-  spec.homepage      = ""
-  spec.license       = ""
+  spec.description   = "App persistent data for RubyMotion Android"
+  spec.summary       = "App persistent data for RubyMotion Android"
+  spec.homepage      = "https://github.com/GantMan/PackingPeanut"
+  spec.license       = "MIT"
 
   files = []
   files << 'README.md'
