@@ -1,29 +1,25 @@
-# PackingPeanut
+# ![PackingPeanut Logo](./_art/logo_100.png) PackingPeanut 
 
-iOS has [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persistence : Android has **PackingPeanut**
+iOS has [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persistence : Android has PackingPeanut
 
-There is a sedulous effort to make this syntax fit BubbleWrap's as much as possible, but differences simply exist, either for good, technical, or sometimes diabolical reasons.
+There is a sedulous effort to make this syntax fit BubbleWrap's as much as possible, but differences simply exist, either for good, technical, or sometimes diabolical reasons :smiling_imp:
 
 ## Installation
 
-Add this line to your application's Gemfile:
+**Step 1:** Add this line to your application's Gemfile:
 
     gem 'PackingPeanut'
 
-And then execute:
+**Step 2:** And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install PackingPeanut
 
 ## Usage
 
 Example Usage from REPL
 ```
-# PP automatically has context if the module is included but in this case
-# First we need to set the context when in REPL, 
+# PP automatically has context if the module is included
+# In this case we need to set the context
 $ App::Persistence.context = self
 => #<MainActivity:0x1d20058e>
 $ App::Persistence['dinner'] = "nachos"
@@ -35,12 +31,34 @@ $ App::Persistence.all
 => {"dinner"=>"nachos", "lunch"=>"tacos"}
 $ App::Persistence.storage_file = "some_new_file"
 => "some_new_file"
+$ App::Persistence['dinner']
+=> ""  # empty because we're now outside the default storage file.
 $ App::Persistence.preference_mode = :world_readable
 => :world_redable
-$ App::Persistence['dinner']
-=> ""  # empty because we're now in a new storage file.
 
 ```
+
+`App::Persistence` has been Aliasted to `PP::Persistence` for the bold.
+
+## What are preference modes?
+
+Preference Modes are ANdroid Operating modes. Use 0 or MODE_PRIVATE for the default operation, MODE_WORLD_READABLE and MODE_WORLD_WRITEABLE to control permissions. The bit MODE_MULTI_PROCESS can also be used if multiple processes are mutating the same SharedPreferences file. MODE_MULTI_PROCESS is always on in apps targeting Gingerbread (Android 2.3) and below, and off by default in later versions.
+
+Memorizable symbols and their corresponding constants:
+```ruby
+    PREFERENCE_MODES = {
+      private: MODE_PRIVATE,
+      readable: MODE_WORLD_READABLE,
+      world_readable: MODE_WORLD_READABLE,
+      writable: MODE_WORLD_WRITEABLE,
+      world_writable: MODE_WORLD_WRITEABLE,
+      multi: MODE_MULTI_PROCESS,
+      multi_process: MODE_MULTI_PROCESS
+    }
+```
+
+## Limitations?
+Achilles, the Death Star, and video game villians always have a significant catch.   As of right now, you can only store strings.   This is due to Android's wonky static typing methods.  I do have plans, ambitions, dreams, etc of finding the cleanest, fastest way to rectify this.
 
 ## Contributing
 
