@@ -17,6 +17,11 @@ a {
   a:hover {
     text-decoration: underline; }
 
+img.logo {
+  width: 100%;
+  max-width: 526px;
+}    
+
 .btn {
   display: inline-block;
   margin-bottom: 1rem;
