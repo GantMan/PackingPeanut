@@ -1,16 +1,16 @@
 # ![PackingPeanut Logo](./_art/logo_100.png) PackingPeanut 
 
-iOS has [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persistence : Android has **PackingPeanut**
+iOS has [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persistence : Android has PackingPeanut
 
 There is a sedulous effort to make this syntax fit BubbleWrap's as much as possible, but differences simply exist, either for good, technical, or sometimes diabolical reasons :smiling_imp:
 
 ## Installation
 
-Add this line to your application's Gemfile:
+**Step 1:** Add this line to your application's Gemfile:
 
     gem 'PackingPeanut'
 
-And then execute:
+**Step 2:** And then execute:
 
     $ bundle
 
@@ -32,11 +32,13 @@ $ App::Persistence.all
 $ App::Persistence.storage_file = "some_new_file"
 => "some_new_file"
 $ App::Persistence['dinner']
-=> ""  # empty because we're now in a new storage file.
+=> ""  # empty because we're now outside the default storage file.
 $ App::Persistence.preference_mode = :world_readable
 => :world_redable
 
 ```
+
+`App::Persistence` has been Aliasted to `PP::Persistence` for the bold.
 
 ## What are preference modes?
 
