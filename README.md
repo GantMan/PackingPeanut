@@ -1,4 +1,4 @@
-# ![PackingPeanut Logo](./_art/logo_100.png) PackingPeanut 
+# ![PackingPeanut Logo](./_art/logo_100.png) PackingPeanut [![Gem Version](https://badge.fury.io/rb/PackingPeanut.svg)](http://badge.fury.io/rb/PackingPeanut)
 
 iOS has [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persistence : Android has PackingPeanut
 
@@ -18,7 +18,13 @@ There is a sedulous effort to make this syntax fit BubbleWrap's as much as possi
 
 ## Usage
 
-Example Usage from REPL
+**It's as simple as:**
+```ruby
+App::Persistence[:foo] = true
+# App::Persistence[:foo] would now return true
+```
+
+Whirlwind Tour via the REPL
 ```
 # PP automatically has context if the module is included
 # In this case we need to set the context
@@ -61,7 +67,10 @@ Memorizable symbols and their corresponding constants:
 ```
 
 ## Limitations?
-Achilles, the Death Star, and video game villians always have a significant catch.   As of right now, you can only store strings, ints, and booleans.   The data is serialized, and should support hashes, arrays, and floats but alas, I claim there be bugs in conversions via RM Android.
+Achilles, the Death Star, and video game villians always have a significant catch.   As of right now, you can only store **strings, ints, and booleans**.   The data is serialized, and should support hashes, arrays, and floats but alas, I claim there be bugs in conversions via RM Android.
+
+## Tests?
+Boy that would be nice wouldn't it?
 
 ## Contributing
 
