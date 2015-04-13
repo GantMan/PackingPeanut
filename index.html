@@ -55,7 +55,7 @@ $ App::Persistence['dinner']
 =&gt; "nachos"
 $ App::Persistence['lunch'] = "tacos"
 $ App::Persistence.all
-=&gt; {"dinner"=&gt;"nachos", "lunch"=&gt;"tacos"}
+=&gt; [{:dinner=&gt;"nachos"}, {:lunch=&gt;"tacos"}]
 $ App::Persistence.storage_file = "some_new_file"
 =&gt; "some_new_file"
 $ App::Persistence['dinner']
@@ -87,7 +87,7 @@ $ App::Persistence.preference_mode = :world_readable
 <h2>
 <a id="limitations" class="anchor" href="#limitations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations?</h2>
 
-<p>Achilles, the Death Star, and video game villians always have a significant catch.   As of right now, you can only store strings.   This is due to Android's wonky static typing methods.  I do have plans, ambitions, dreams, etc of finding the cleanest, fastest way to rectify this.</p>
+<p>Achilles, the Death Star, and video game villians always have a significant catch.   As of right now, you can only store strings, ints, and booleans.   The data is serialized, and should support hashes, arrays, and floats but alas, I claim there be bugs in conversions via RM Android.</p>
 
 <h2>
 <a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
