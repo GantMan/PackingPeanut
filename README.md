@@ -28,9 +28,10 @@ $ App::Persistence['dinner'] = "nachos"
 => true  # This differs from Bubblewrap.... boolean on success for save (more informative)
 $ App::Persistence['dinner'] 
 => "nachos"
-$ App::Persistence['lunch'] = "tacos"
+$ App::Persistence[:lunch] = "tacos"
+=> "tacos" # Use symbols or strings as you please
 $ App::Persistence.all
-=> {"dinner"=>"nachos", "lunch"=>"tacos"}
+=> [{:dinner=>"nachos"}, {:lunch=>"tacos"}]
 $ App::Persistence.storage_file = "some_new_file"
 => "some_new_file"
 $ App::Persistence['dinner']
@@ -60,7 +61,7 @@ Memorizable symbols and their corresponding constants:
 ```
 
 ## Limitations?
-Achilles, the Death Star, and video game villians always have a significant catch.   As of right now, you can only store strings.   This is due to Android's wonky static typing methods.  I do have plans, ambitions, dreams, etc of finding the cleanest, fastest way to rectify this.
+Achilles, the Death Star, and video game villians always have a significant catch.   As of right now, you can only store strings, ints, and booleans.   The data is serialized, and should support hashes, arrays, and floats but alas, I claim there be bugs in conversions via RM Android.
 
 ## Contributing
 
