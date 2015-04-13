@@ -1,4 +1,4 @@
-# ![PackingPeanut Logo](./_art/logo_100.png) PackingPeanut 
+# ![PackingPeanut Logo](./_art/logo_100.png) PackingPeanut [![Gem Version](https://badge.fury.io/rb/PackingPeanut.svg)](http://badge.fury.io/rb/PackingPeanut)
 
 iOS has [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persistence : Android has PackingPeanut
 
