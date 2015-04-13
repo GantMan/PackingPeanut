@@ -38,10 +38,10 @@ $ App::Persistence['dinner']
 => ""  # empty because we're now outside the default storage file.
 $ App::Persistence.preference_mode = :world_readable
 => :world_redable
-
+$ PP::Persistence['some_boolean'] = true #You can use PP instead of App if you like
 ```
 
-`App::Persistence` has been Aliasted to `PP::Persistence` for the bold.
+
 
 ## What are preference modes?
 

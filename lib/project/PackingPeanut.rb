@@ -1,16 +1,3 @@
-
-# Potential fixes for type specifics
-# Super fix #1 ->   Serialize it: http://stackoverflow.com/questions/7057845/save-arraylist-to-sharedpreferences
-# ObjectSerializer: https://github.com/apache/pig/blob/89c2e8e76c68d0d0abe6a36b4e08ddc56979796f/src/org/apache/pig/impl/util/ObjectSerializer.java
-# https://pig.apache.org/releases.html
-# Super fix #2 ->   Store depending on the class and retrieve with either
-# A: Failover defaults calling methods
-# B: Grab ALL data, and use that hash
-# Super fix #3 ->  Serialize with JSON
-# new Gson().toJson(obj)
-# And for deserialization,
-
-
 module App
   module Persistence
 
@@ -45,6 +32,7 @@ module App
 
     def [](key)
       json_string = get_value(key)
+      return json_string if json_string == ""
       deserialize(key, json_string)
     end
 
@@ -60,7 +48,7 @@ module App
 
     def get_value key
       settings = get_settings
-      value = settings.getString(key,nil)
+      settings.getString(key,nil)
     end
 
     def storage_file=(value)
