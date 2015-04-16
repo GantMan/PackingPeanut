@@ -37,13 +37,12 @@ module App
     end
 
     def serialize(key, value)
-      json = JSONObject.new
-      json.put(key, value)
+      Moran.generate({:"#{key}" => value})
     end
 
     def deserialize(key, json_string)
-      json = Moran.parse(json_string)
-      json.get(key)
+      json_hash = Moran.parse(json_string)[key]
+      #json_hash[key]
     end
 
     def get_value key
