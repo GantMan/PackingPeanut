@@ -42,7 +42,7 @@ module App
     end
 
     def deserialize(key, json_string)
-      json = JSONObject.new(json_string)
+      json = Moran.parse(json_string)
       json.get(key)
     end
 

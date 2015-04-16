@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-VERSION = "0.0.3"
+VERSION = "0.1.0"
 
 Gem::Specification.new do |spec|
   spec.name          = "PackingPeanut"
@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "rake"
+  spec.add_dependency "moran"
 end
