@@ -41,8 +41,7 @@ module App
     end
 
     def deserialize(key, json_string)
-      json_hash = Moran.parse(json_string)[key]
-      #json_hash[key]
+      Moran.parse(json_string)[key]
     end
 
     def get_value key
