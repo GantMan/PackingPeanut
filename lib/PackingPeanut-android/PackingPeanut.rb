@@ -27,7 +27,7 @@ module App
       editor = settings.edit
       json = serialize(key,value)
       editor.putString(key, json.toString)
-      editor.commit 
+      editor.commit
     end
 
     def [](key)
@@ -81,7 +81,7 @@ module App
     end
 
     # attr_accessor is not supported for modules in RMAndroid... yet.
-    def context= supplied_context 
+    def context= supplied_context
       @context = supplied_context
     end
 
