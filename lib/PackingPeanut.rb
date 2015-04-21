@@ -24,6 +24,4 @@ Motion::Project::App.setup do |app|
     app.files.insert(insert_point, file)
   end
 
-  # Required for android as of 4/11/2015
-  app.files.flatten! if platform_name == 'android'
 end
