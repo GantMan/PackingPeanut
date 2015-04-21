@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 $:.unshift("/Library/RubyMotion/lib")
-require 'motion/project/template/android'
+
+if ENV['android']
+  require 'motion/project/template/android'
+else
+  require 'motion/project/template/ios'
+end
+
 require './lib/PackingPeanut'
 
 begin
