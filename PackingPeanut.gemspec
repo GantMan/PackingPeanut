@@ -21,5 +21,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "rake"
   spec.add_dependency "moran"
-  spec.add_dependency "motion-gradle"
+  spec.add_development_dependency "motion-gradle"
 end
