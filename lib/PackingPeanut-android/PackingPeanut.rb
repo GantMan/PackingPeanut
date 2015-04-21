@@ -77,6 +77,7 @@ module App
     # Allows us to use this from anywhere by setting the context
     # Useful when you want to access this module from the REPL
     def current_context
+      #p defined? getApplicationContext
       @context || getApplicationContext
     end
 
