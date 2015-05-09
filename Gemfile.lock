@@ -1,11 +1,15 @@
 PATH
   remote: .
   specs:
-    PackingPeanut (0.0.3)
+    PackingPeanut (1.0.0)
+      moran
 
 GEM
   remote: https://rubygems.org/
   specs:
+    moran (0.0.1)
+      motion-gradle
+    motion-gradle (1.0.3)
     rake (10.4.2)
 
 PLATFORMS
@@ -13,4 +17,5 @@ PLATFORMS
 
 DEPENDENCIES
   PackingPeanut!
+  motion-gradle
   rake

@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
-VERSION = "0.0.3"
+VERSION = "1.0.0"
 
 Gem::Specification.new do |spec|
   spec.name          = "PackingPeanut"
   spec.version       = VERSION
   spec.authors       = ["Gant"]
   spec.email         = ["GantMan@gmail.com"]
-  spec.description   = "App persistent data for RubyMotion Android"
-  spec.summary       = "App persistent data for RubyMotion Android, designed to fit the API stylings of the popular iOS Gem BubbleWrap which also supplies persistence."
+  spec.description   = "App persistent data for RubyMotion Android and iOS"
+  spec.summary       = "App persistent data for RubyMotion Android and iOS, designed to fit the API stylings of the popular iOS Gem BubbleWrap which also supplies persistence."
   spec.homepage      = "http://gantman.github.io/PackingPeanut/"
   spec.license       = "MIT"
 
@@ -20,4 +20,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "rake"
+  spec.add_runtime_dependency "moran"
+  spec.add_development_dependency "motion-gradle"
 end

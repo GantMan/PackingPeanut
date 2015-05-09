@@ -23,27 +23,29 @@ module App
     # Serialize key/value as json then
     # store that string with the settings key == json key
     def []=(key, value)
+      # Let's play nice with strings and non-strings
+      string_key = key.to_s
       settings = get_settings
       editor = settings.edit
-      json = serialize(key,value)
-      editor.putString(key, json.toString)
+      json = serialize(string_key,value)
+      editor.putString(string_key, json.toString)
       editor.commit
     end
 
     def [](key)
-      json_string = get_value(key)
+      # Let's play nice with strings and non-strings
+      string_key = key.to_s
+      json_string = get_value(string_key)
       return json_string if json_string == ""
-      deserialize(key, json_string)
+      deserialize(string_key, json_string)
     end
 
     def serialize(key, value)
-      json = JSONObject.new
-      json.put(key, value)
+      Moran.generate({:"#{key}" => value})
     end
 
     def deserialize(key, json_string)
-      json = JSONObject.new(json_string)
-      json.get(key)
+      Moran.parse(json_string)[key]
     end
 
     def get_value key
@@ -69,7 +71,15 @@ module App
 
     def all
       settings = get_settings
-      settings.getAll.map { |key, value| {key.to_sym => JSONObject.new(value).get(key)} }
+      all_hashes = settings.getAll.map { |key, value| Moran.parse(value) }
+
+      # Currently an array of hashes, needs to be one big hash
+      merged_hashes = {}
+      all_hashes.each do |h|
+        merged_hashes = merged_hashes.merge(h)
+      end
+
+      merged_hashes
     end
 
     def get_settings
@@ -79,6 +89,7 @@ module App
     # Allows us to use this from anywhere by setting the context
     # Useful when you want to access this module from the REPL
     def current_context
+      #p defined? getApplicationContext
       @context || getApplicationContext
     end
 
@@ -90,4 +101,5 @@ module App
   end
 end
 
-PP = App
+# delicious shortcut
+PP = App::Persistence unless defined? PP

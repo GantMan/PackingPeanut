@@ -1,8 +1,11 @@
 # ![PackingPeanut Logo](./_art/logo_100.png) PackingPeanut [![Gem Version](https://badge.fury.io/rb/PackingPeanut.svg)](http://badge.fury.io/rb/PackingPeanut)
 
-iOS has [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persistence : Android has PackingPeanut!
+### Cross Platform App Persistence
+![cross platform rubymotion gem](./_art/both_icon.png)
 
-There is a sedulous effort to make this syntax fit BubbleWrap's as much as possible, but differences simply exist, either for good, technical, or sometimes diabolical reasons :smiling_imp:
+Inspired by BubbleWrap's easy syntax for App Persistence - Now a CROSS PLATFORM App Persistence Gem for RubyMotion.
+
+There is a sedulous effort to make this syntax fit BubbleWrap's as much as possible for easy replacement :smiling_imp:
 
 [**GITHUB HOMEPAGE**](http://gantman.github.io/PackingPeanut/)
 
@@ -16,6 +19,10 @@ There is a sedulous effort to make this syntax fit BubbleWrap's as much as possi
 
     $ bundle
 
+**Step 3:** IF on Android:
+
+    $ [bundle exec] rake gradle:install
+
 ## Usage
 
 **It's as simple as:**
@@ -26,28 +33,30 @@ App::Persistence[:foo] = true
 
 Whirlwind Tour via the REPL
 ```
+# ONLY ANDROID REQUIRES CONTEXT!
 # Set the context (required in the REPL or when not including the module).
 $ App::Persistence.context = self
 => #<MainActivity:0x1d20058e>
 $ App::Persistence['dinner'] = "nachos"
-=> true  # This differs from Bubblewrap.... boolean on success for save (more informative)
+=> "nachos"
 $ App::Persistence['dinner']
 => "nachos"
 $ App::Persistence[:lunch] = "tacos"
 => "tacos" # Use symbols or strings as you please
 $ App::Persistence.all
-=> [{:dinner=>"nachos"}, {:lunch=>"tacos"}]
+=> {"dinner"=>"nachos", "lunch"=>"tacos"}
 $ App::Persistence.storage_file = "some_new_file"
 => "some_new_file"
 $ App::Persistence['dinner']
 => ""  # empty because we're now outside the default storage file.
+
+# You can use PP instead of App::Persistence if you like
+$ PP['some_boolean'] = true
+
+# On Android you can set prefrence_modes for cross/app communication
 $ App::Persistence.preference_mode = :world_readable
 => :world_readable
-# You can use PP instead of App if you like
-$ PP::Persistence['some_boolean'] = true
 ```
-
-
 
 ## What are preference modes?
 
@@ -68,11 +77,13 @@ Memorizable symbols and their corresponding constants:
 
 Use 0 or MODE_PRIVATE for the default operation, MODE_WORLD_READABLE and MODE_WORLD_WRITEABLE for more permissive modes. The bit MODE_MULTI_PROCESS can also be used if multiple processes are mutating the same SharedPreferences file. MODE_MULTI_PROCESS is always on in apps targeting Gingerbread (Android 2.3) and below, and off by default in later versions.
 
-## Limitations?
-Achilles, the Death Star, and video game villians always have a significant catch.   As of right now, you can only store **strings, ints, and booleans**.   The data is serialized, and should support hashes, arrays, and floats but alas, I claim there be bugs in conversions via RM Android.
+## Dependencies
+Adding [Darin's moran gem](https://github.com/darinwilson/moran) allowed serialization of hashes for Android.  This means `motion-gradle` is also necessary for complete Packing Peanut excellence on Android.
 
 ## Tests?
-Boy that would be nice wouldn't it?
+
+  * **iOS:** Yup!
+  * **Android:** Boy that would be nice wouldn't it?
 
 ## Contributing
 

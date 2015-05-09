@@ -3,13 +3,18 @@ unless defined?(Motion::Project::Config)
   raise "The PackingPeanut gem must be required within a RubyMotion project Rakefile."
 end
 
+# WHAT ARE WE?
+platform = Motion::Project::App.respond_to?(:template) ? Motion::Project::App.template : :ios
+if platform.to_s.start_with?('ios')
+  platform_name = 'ios'
+elsif platform.to_s.start_with?('android')
+  platform_name = 'android'
+end
+
+# necessary for Android gem dependency as of 5/9/2015
+require "moran" if platform_name == "android"
+
 Motion::Project::App.setup do |app|
-  platform = app.respond_to?(:template) ? app.template : :ios
-  if platform.to_s.start_with?('ios')
-    platform_name = 'ios'
-  elsif platform.to_s.start_with?('android')
-    platform_name = 'android'
-  end
   platform_lib = File.join(File.dirname(__FILE__), "PackingPeanut-#{platform_name}")
   unless File.exists? platform_lib
     raise "Sorry, the platform #{platform.inspect} (aka #{platform_name}) is not supported by PackingPeanut"
@@ -24,6 +29,4 @@ Motion::Project::App.setup do |app|
     app.files.insert(insert_point, file)
   end
 
-  # Required for android as of 4/11/2015
-  app.files.flatten! if platform_name == 'android'
 end
