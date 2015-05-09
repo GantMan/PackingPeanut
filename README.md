@@ -16,6 +16,10 @@ There is a sedulous effort to make this syntax fit BubbleWrap's as much as possi
 
     $ bundle
 
+**Step 3:** IF on Android:
+
+    $ [bundle exec] rake gradle:install
+
 ## Usage
 
 **It's as simple as:**

@@ -23,17 +23,21 @@ module App
     # Serialize key/value as json then
     # store that string with the settings key == json key
     def []=(key, value)
+      # Let's play nice with strings and non-strings
+      string_key = key.to_s
       settings = get_settings
       editor = settings.edit
-      json = serialize(key,value)
-      editor.putString(key, json.toString)
+      json = serialize(string_key,value)
+      editor.putString(string_key, json.toString)
       editor.commit
     end
 
     def [](key)
-      json_string = get_value(key)
+      # Let's play nice with strings and non-strings
+      string_key = key.to_s
+      json_string = get_value(string_key)
       return json_string if json_string == ""
-      deserialize(key, json_string)
+      deserialize(string_key, json_string)
     end
 
     def serialize(key, value)
@@ -77,6 +81,7 @@ module App
     # Allows us to use this from anywhere by setting the context
     # Useful when you want to access this module from the REPL
     def current_context
+      raise "You need to run [bundle exec] rake gradle:install" unless defined? Com::Fasterxml::Jackson::Core::JsonParser
       #p defined? getApplicationContext
       @context || getApplicationContext
     end
