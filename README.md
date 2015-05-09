@@ -1,6 +1,9 @@
 # ![PackingPeanut Logo](./_art/logo_100.png) PackingPeanut [![Gem Version](https://badge.fury.io/rb/PackingPeanut.svg)](http://badge.fury.io/rb/PackingPeanut)
 
-Inspired by iOS [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persistence - Now a CROSS PLATFORM App Persistence Gem (iOS/Android) PackingPeanut!
+### Cross Platform App Persistence
+![cross platform rubymotion gem](./_art/both_icon.png)
+
+Inspired by BubbleWrap's easy syntax for App Persistence - Now a CROSS PLATFORM App Persistence Gem for RubyMotion.
 
 There is a sedulous effort to make this syntax fit BubbleWrap's as much as possible for easy replacement :smiling_imp:
 
@@ -41,7 +44,7 @@ $ App::Persistence['dinner']
 $ App::Persistence[:lunch] = "tacos"
 => "tacos" # Use symbols or strings as you please
 $ App::Persistence.all
-=> [{:dinner=>"nachos"}, {:lunch=>"tacos"}]
+=> {"dinner"=>"nachos", "lunch"=>"tacos"}
 $ App::Persistence.storage_file = "some_new_file"
 => "some_new_file"
 $ App::Persistence['dinner']
