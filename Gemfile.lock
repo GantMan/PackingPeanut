@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    PackingPeanut (0.1.0)
+    PackingPeanut (1.0.0)
       moran
 
 GEM

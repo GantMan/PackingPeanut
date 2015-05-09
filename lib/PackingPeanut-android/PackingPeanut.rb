@@ -81,7 +81,6 @@ module App
     # Allows us to use this from anywhere by setting the context
     # Useful when you want to access this module from the REPL
     def current_context
-      raise "You need to run [bundle exec] rake gradle:install" unless defined? Com::Fasterxml::Jackson::Core::JsonParser
       #p defined? getApplicationContext
       @context || getApplicationContext
     end
