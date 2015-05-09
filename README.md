@@ -35,7 +35,7 @@ Whirlwind Tour via the REPL
 $ App::Persistence.context = self
 => #<MainActivity:0x1d20058e>
 $ App::Persistence['dinner'] = "nachos"
-=> true  # This differs from Bubblewrap.... boolean on success for save (more informative)
+=> "nachos"
 $ App::Persistence['dinner']
 => "nachos"
 $ App::Persistence[:lunch] = "tacos"
@@ -48,8 +48,8 @@ $ App::Persistence['dinner']
 => ""  # empty because we're now outside the default storage file.
 $ App::Persistence.preference_mode = :world_readable
 => :world_readable
-# You can use PP instead of App if you like
-$ PP::Persistence['some_boolean'] = true
+# You can use PP instead of App::Persistence if you like
+$ PP['some_boolean'] = true
 ```
 
 
