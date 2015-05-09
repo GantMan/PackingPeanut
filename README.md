@@ -30,7 +30,7 @@ App::Persistence[:foo] = true
 
 Whirlwind Tour via the REPL
 ```
-# ANDROID REQUIRES CONTEXT!
+# ONLY ANDROID REQUIRES CONTEXT!
 # Set the context (required in the REPL or when not including the module).
 $ App::Persistence.context = self
 => #<MainActivity:0x1d20058e>

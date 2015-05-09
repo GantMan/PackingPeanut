@@ -71,7 +71,15 @@ module App
 
     def all
       settings = get_settings
-      settings.getAll.map { |key, value| {key.to_sym => JSONObject.new(value).get(key)} }
+      all_hashes = settings.getAll.map { |key, value| Moran.parse(value) }
+
+      # Currently an array of hashes, needs to be one big hash
+      merged_hashes = {}
+      all_hashes.each do |h|
+        merged_hashes = merged_hashes.merge(h)
+      end
+
+      merged_hashes
     end
 
     def get_settings
@@ -94,4 +102,4 @@ module App
 end
 
 # delicious shortcut
-PP = App::Persistence
+PP = App::Persistence unless defined? PP
