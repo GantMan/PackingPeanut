@@ -46,13 +46,14 @@ $ App::Persistence.storage_file = "some_new_file"
 => "some_new_file"
 $ App::Persistence['dinner']
 => ""  # empty because we're now outside the default storage file.
-$ App::Persistence.preference_mode = :world_readable
-=> :world_readable
+
 # You can use PP instead of App::Persistence if you like
 $ PP['some_boolean'] = true
+
+# On Android you can set prefrence_modes for cross/app communication
+$ App::Persistence.preference_mode = :world_readable
+=> :world_readable
 ```
-
-
 
 ## What are preference modes?
 
@@ -74,10 +75,12 @@ Memorizable symbols and their corresponding constants:
 Use 0 or MODE_PRIVATE for the default operation, MODE_WORLD_READABLE and MODE_WORLD_WRITEABLE for more permissive modes. The bit MODE_MULTI_PROCESS can also be used if multiple processes are mutating the same SharedPreferences file. MODE_MULTI_PROCESS is always on in apps targeting Gingerbread (Android 2.3) and below, and off by default in later versions.
 
 ## Dependencies
-As of version `0.0.3` there were no dependencies, but PP was completely unable to store hashes!  This was possibly due to a bug in RM Android... or a limitation of Android's JSON.  Adding [Darin's moran gem](https://github.com/darinwilson/moran) allowed serialization of hashes.  This means `motion-gradle` is also necessary for complete Packing Peanut excellence.
+Adding [Darin's moran gem](https://github.com/darinwilson/moran) allowed serialization of hashes for Android.  This means `motion-gradle` is also necessary for complete Packing Peanut excellence on Android.
 
 ## Tests?
-Boy that would be nice wouldn't it?
+
+  * **iOS:** Yup!
+  * **Android:** Boy that would be nice wouldn't it?
 
 ## Contributing
 
