@@ -3,6 +3,8 @@ unless defined?(Motion::Project::Config)
   raise "The PackingPeanut gem must be required within a RubyMotion project Rakefile."
 end
 
+require "moran"
+
 Motion::Project::App.setup do |app|
   platform = app.respond_to?(:template) ? app.template : :ios
   if platform.to_s.start_with?('ios')
