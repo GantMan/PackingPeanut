@@ -11,6 +11,7 @@ elsif platform.to_s.start_with?('android')
   platform_name = 'android'
 end
 
+# necessary for Android gem dependency as of 5/9/2015
 require "moran" if platform_name == "android"
 
 Motion::Project::App.setup do |app|

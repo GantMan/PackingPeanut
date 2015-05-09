@@ -7,6 +7,14 @@ module App
       @app_key ||= NSBundle.mainBundle.bundleIdentifier
     end
 
+    def storage_file
+      @persistence_storage_file ||= "default_persistence_file"
+    end
+
+    def storage_file=(value)
+      @persistence_storage_file = value
+    end
+
     def []=(key, value)
       storage.setObject(value, forKey: storage_key(key))
       storage.synchronize
@@ -41,14 +49,14 @@ module App
     end
 
     def storage_key(key)
-      "#{app_key}_#{key}"
+      "#{app_key}_#{storage_file}_#{key}"
     end
 
     def all
-      hash = storage.dictionaryRepresentation.select{|k,v| k.start_with?(app_key) }
+      hash = storage.dictionaryRepresentation.select{|k,v| k.start_with?("#{app_key}_#{storage_file}") }
       new_hash = {}
       hash.each do |k,v|
-        new_hash[k.sub("#{app_key}_", '')] = v
+        new_hash[k.sub("#{app_key}_#{storage_file}_", '')] = v
       end
       new_hash
     end
@@ -56,4 +64,4 @@ module App
 
 end
 
-PP = App
+PP = App::Persistence

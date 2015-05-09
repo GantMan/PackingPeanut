@@ -93,4 +93,5 @@ module App
   end
 end
 
-PP = App
+# delicious shortcut
+PP = App::Persistence
