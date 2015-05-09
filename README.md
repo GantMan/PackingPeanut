@@ -1,8 +1,8 @@
 # ![PackingPeanut Logo](./_art/logo_100.png) PackingPeanut [![Gem Version](https://badge.fury.io/rb/PackingPeanut.svg)](http://badge.fury.io/rb/PackingPeanut)
 
-iOS has [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persistence : Android has PackingPeanut!
+Inspired by iOS [BubbleWrap](https://github.com/rubymotion/BubbleWrap) for App Persistence - Now a CROSS PLATFORM App Persistence Gem (iOS/Android) PackingPeanut!
 
-There is a sedulous effort to make this syntax fit BubbleWrap's as much as possible, but differences simply exist, either for good, technical, or sometimes diabolical reasons :smiling_imp:
+There is a sedulous effort to make this syntax fit BubbleWrap's as much as possible for easy replacement :smiling_imp:
 
 [**GITHUB HOMEPAGE**](http://gantman.github.io/PackingPeanut/)
 
