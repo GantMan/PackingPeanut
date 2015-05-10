@@ -56,12 +56,13 @@
 $ App::Persistence.context = self
 =&gt; #&lt;MainActivity:0x1d20058e&gt;
 $ App::Persistence['dinner'] = "nachos"
-=&gt; true  # This differs from Bubblewrap.... boolean on success for save (more informative)
+=&gt; "nachos"
 $ App::Persistence['dinner'] 
 =&gt; "nachos"
 $ App::Persistence['lunch'] = "tacos"
+=&gt; "tacos"
 $ App::Persistence.all
-=&gt; [{"dinner"=&gt;"nachos", "lunch"=&gt;"tacos"}]
+=&gt; {"dinner"=&gt;"nachos", "lunch"=&gt;"tacos"}
 $ App::Persistence.storage_file = "some_new_file"
 =&gt; "some_new_file"
 $ App::Persistence['dinner']
