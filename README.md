@@ -48,10 +48,12 @@ $ App::Persistence.all
 $ App::Persistence.storage_file = "some_new_file"
 => "some_new_file"
 $ App::Persistence['dinner']
-=> ""  # empty because we're now outside the default storage file.
+=> nil  # empty because we're now outside the default storage file.
 
 # You can use PP instead of App::Persistence if you like
 $ PP['some_boolean'] = true
+# You can use PackingPeanut (true name) if you like
+$ PackingPeanut['so_easy'] = true
 
 # On Android you can set prefrence_modes for cross/app communication
 $ App::Persistence.preference_mode = :world_readable
@@ -84,6 +86,9 @@ Adding [Darin's moran gem](https://github.com/darinwilson/moran) allowed seriali
 
   * **iOS:** Yup!
   * **Android:** Boy that would be nice wouldn't it?
+
+## PackingPeanut Alongside Bubblewrap?
+It's meant to look just like BubbleWrap, not fight with it.   If include the BubbleWrap library (iOS), PackingPeanut will gracefully bow out of the App::Persistence namespace.  You can still access PackingPeanut with `PP` or `PackingPeanut`.
 
 ## Contributing
 
