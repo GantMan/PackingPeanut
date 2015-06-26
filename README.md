@@ -87,8 +87,28 @@ Adding [Darin's moran gem](https://github.com/darinwilson/moran) allowed seriali
   * **iOS:** Yup!
   * **Android:** Boy that would be nice wouldn't it?
 
-## PackingPeanut Alongside Bubblewrap?
-It's meant to look just like BubbleWrap, not fight with it.   If include the BubbleWrap library (iOS), PackingPeanut will gracefully bow out of the App::Persistence namespace.  You can still access PackingPeanut with `PP` or `PackingPeanut`.
+## PackingPeanut Alongside Bubblewrap on iOS?
+It's meant to look just like BubbleWrap, not fight with it.   If include the BubbleWrap library, PackingPeanut will gracefully bow out of the App::Persistence namespace.  You can still access PackingPeanut with `PP` or `PackingPeanut`.
+
+## Explain this Android `context` _thing_ Again
+Just like a conversation taken out of context can be confusing, Android has a lot of moving parts and requires just about EVERYTHING that would be a lib component to understand the context.   When accessing persistent data, context is required.   You can easily handle this by giving PackingPeanut your application context in your Application startup file.
+
+PackingPeanut Context Examples:
+```ruby
+# Providing Context - Regular
+class MyApplication < Android::App::Application
+  def onCreate
+    PP.context = self
+  end
+end
+
+# Providing Context with BluePotion
+class MyApplication < PMApplication
+  def on_create
+    PP.context = self
+  end
+end
+```
 
 ## Contributing
 

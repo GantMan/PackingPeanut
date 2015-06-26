@@ -82,6 +82,7 @@ module PackingPeanut
   end
 
   def get_settings
+    raise "[PackingPeanut] Fatal Error - You must set the context before accessing persistent data." unless @context
     current_context.getSharedPreferences(storage_file, preference_mode)
   end
 
@@ -89,7 +90,7 @@ module PackingPeanut
   # Useful when you want to access this module from the REPL
   def current_context
     # THIS SHOULD HAVE SAFE FAILOVERS
-    # BUT defined? is causing erros in RMA as of this commit
+    # BUT defined? is causing erros in RMA native methods as of this commit
     @context
   end
 
