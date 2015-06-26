@@ -32,9 +32,9 @@ App::Persistence[:foo] = true
 ```
 
 Whirlwind Tour via the REPL
-```
+```ruby
 # ONLY ANDROID REQUIRES CONTEXT!
-# Set the context (required in the REPL or when not including the module).
+# See the section on Android context for more info
 $ App::Persistence.context = self
 => #<MainActivity:0x1d20058e>
 $ App::Persistence['dinner'] = "nachos"
@@ -49,12 +49,18 @@ $ App::Persistence.storage_file = "some_new_file"
 => "some_new_file"
 $ App::Persistence['dinner']
 => nil  # empty because we're now outside the default storage file.
+```
 
+Friendly aliases:
+```ruby
 # You can use PP instead of App::Persistence if you like
 $ PP['some_boolean'] = true
 # You can use PackingPeanut (true name) if you like
 $ PackingPeanut['so_easy'] = true
+```
 
+Access deeper features:
+```ruby
 # On Android you can set prefrence_modes for cross/app communication
 $ App::Persistence.preference_mode = :world_readable
 => :world_readable
@@ -88,7 +94,7 @@ Adding [Darin's moran gem](https://github.com/darinwilson/moran) allowed seriali
   * **Android:** Boy that would be nice wouldn't it?
 
 ## PackingPeanut Alongside Bubblewrap on iOS?
-It's meant to look just like BubbleWrap, not fight with it.   If include the BubbleWrap library, PackingPeanut will gracefully bow out of the App::Persistence namespace.  You can still access PackingPeanut with `PP` or `PackingPeanut`.
+It's meant to look just like BubbleWrap, not fight with it.   If you include the BubbleWrap library, PackingPeanut will gracefully bow out of the App::Persistence namespace.  You can still access PackingPeanut with `PP` or `PackingPeanut`.
 
 ## Explain this Android `context` _thing_ Again
 Just like a conversation taken out of context can be confusing, Android has a lot of moving parts and requires just about EVERYTHING that would be a lib component to understand the context.   When accessing persistent data, context is required.   You can easily handle this by giving PackingPeanut your application context in your Application startup file.
