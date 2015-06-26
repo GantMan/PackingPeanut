@@ -104,4 +104,11 @@ describe App::Persistence do
     end
 
   end
+
+  describe "altenate names" do
+    it 'can be referred to via PP' do
+      App::Persistence.should.equal PackingPeanut
+      PP.should.equal PackingPeanut
+    end
+  end
 end
