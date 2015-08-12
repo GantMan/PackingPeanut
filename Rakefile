@@ -3,6 +3,8 @@ $:.unshift("/Library/RubyMotion/lib")
 
 if ENV['android']
   require 'motion/project/template/android'
+elsif ENV['osx']
+  require 'motion/project/template/osx'
 else
   require 'motion/project/template/ios'
 end
