@@ -5,7 +5,7 @@ end
 
 # WHAT ARE WE?
 platform = Motion::Project::App.respond_to?(:template) ? Motion::Project::App.template : :ios
-if platform.to_s.start_with?('ios')
+if platform.to_s.start_with?('ios') or platform.to_s.start_with?('osx')
   platform_name = 'ios'
 elsif platform.to_s.start_with?('android')
   platform_name = 'android'
