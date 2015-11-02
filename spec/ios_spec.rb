@@ -1,5 +1,9 @@
 describe App::Persistence do
 
+  after do
+    App::Persistence.delete_all!
+  end
+
   describe '.app_key' do
 
     it "caches the @app_key" do
@@ -56,6 +60,11 @@ describe App::Persistence do
   end
 
   describe "retrieving objects" do
+    before do
+      App::Persistence["arbitraryNumber"] = 42
+      App::Persistence[:arbitraryString] = 'test string'
+    end
+
     it 'can retrieve persisted objects' do
       App::Persistence['arbitraryNumber'].should == 42
       App::Persistence[:arbitraryString].should == 'test string'
@@ -67,6 +76,12 @@ describe App::Persistence do
   end
 
   describe "retrieving all objects" do
+    before do
+      App::Persistence["arbitraryNumber"] = 42
+      App::Persistence[:anotherArbitraryNumber] = 9001
+      App::Persistence[:arbitraryString] = 'test string'
+    end
+
     it 'can retrieve a dictionary of all objects' do
       all = App::Persistence.all
       all.is_a?(Hash).should == true
@@ -104,6 +119,39 @@ describe App::Persistence do
     end
 
   end
+
+  describe "deleting everything!" do
+    before do
+      App::Persistence.delete_all!
+      App::Persistence['arbitraryString'] = 'foobarbaz'
+      App::Persistence[:my_prefs] = [1, 2, 3, 4, "five"]
+    end
+
+    it 'should have two preferences' do
+      App::Persistence['arbitraryString'].should == 'foobarbaz'
+      App::Persistence[:my_prefs].should  == [1, 2, 3, 4, "five"]
+    end
+
+    it 'should delete everything' do
+      App::Persistence.all.count.should == 2
+      App::Persistence.delete_all!
+      App::Persistence.all.count.should == 0
+    end
+
+    it 'should only call synchronize once at the end' do
+      storage = NSUserDefaults.standardUserDefaults
+      def storage.synchronize
+        @sync_called ||= 0
+        @sync_called = @sync_called + 1
+      end
+
+      App::Persistence.delete_all!
+
+      storage.instance_variable_get(:@sync_called).should.equal 1
+    end
+
+  end
+
 
   describe "altenate names" do
     it 'can be referred to via PP' do
