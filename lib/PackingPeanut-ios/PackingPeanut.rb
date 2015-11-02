@@ -43,6 +43,13 @@ module PackingPeanut
     value
   end
 
+  def delete_all!
+    all.keys.each do |k|
+      storage.removeObjectForKey(storage_key(k))
+    end
+    storage.synchronize
+  end
+
   def storage
     NSUserDefaults.standardUserDefaults
   end

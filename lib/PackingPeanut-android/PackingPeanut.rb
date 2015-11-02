@@ -81,6 +81,19 @@ module PackingPeanut
     merged_hashes
   end
 
+  def delete(key)
+    string_key = key.to_s
+    editor = settings.edit
+    editor.remove(string_key)
+    editor.commit
+  end
+
+  def delete_all!
+    editor = settings.edit
+    editor.clear()
+    editor.commit
+  end
+
   def get_settings
     raise "[PackingPeanut] Fatal Error - You must set the context before accessing persistent data." unless @context
     current_context.getSharedPreferences(storage_file, preference_mode)
