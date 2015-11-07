@@ -82,6 +82,7 @@ module PackingPeanut
   end
 
   def delete(key)
+    settings = get_settings
     string_key = key.to_s
     editor = settings.edit
     editor.remove(string_key)
@@ -89,6 +90,7 @@ module PackingPeanut
   end
 
   def delete_all!
+    settings = get_settings
     editor = settings.edit
     editor.clear()
     editor.commit
